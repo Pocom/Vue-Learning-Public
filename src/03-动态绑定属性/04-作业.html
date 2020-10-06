@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .red {
+      color: red;
+    }
+  </style>
+</head>
+<body>
+  <div id="app">
+    <ul>
+      <li v-for="(val, ind) in movies" :class="{ 'red': cur == ind}" @click="movieClick(ind)">
+        {{ ind+1 }} -- {{ val }}
+      </li>
+    </ul>
+  </div>
+  <script src="../js/vue.js"></script>
+  <script>
+    const app = new Vue({
+      el: "#app",
+      data: {
+        movies: ["火影忍者", "进击的巨人", "石纪元"],
+        cur: -1
+      },
+      methods: {
+        movieClick: function (index) {
+          console.log(index);
+          this.cur = this.cur == index?-1:index;
+        }
+      }
+    })
+  </script>
+</body>
+</html>

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .center {
+      width: 600px;
+      margin: 0 auto;
+      text-align: center;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="app">
+
+    <!-- .stop 修饰符 -->
+    <div @click="divClick" class="center">
+      divArea
+      <button @click.stop="btnClick">Button</button>
+    </div>
+    <br />
+
+    <!-- .prevent 修饰符 -->
+    <form action="baidu" align='center'>
+      <input type="submit" value="提交" @click.prevent="submitClick">
+    </form>
+
+    <div class="center">
+      <!-- 监听某个按键 -->
+      <input type="text" @keyUp.k="keyUp">
+      <br />
+      <input type="text" @keyUp.enter="keyUp">
+    </div>
+    <br />
+
+    <div class="center">
+      <button @click.once="btnClick2">Button 2</button>
+    </div>
+    
+
+  </div>
+  <script src="../js/vue.js"></script>
+  <script>
+    const vm = new Vue({
+      el: '#app',
+      data: {
+      },
+      methods: {
+        divClick() {
+          console.log("divClick!")
+        },
+        btnClick() {
+          console.log("btnClick!")
+        },
+        submitClick() {
+          console.log('submitClick!')
+        },
+        keyUp() {
+          console.log('keyUp');
+        },
+        btnClick2() {
+          console.log("btnClick 2!")
+        }
+      }
+    })
+  </script>
+</body>
+
+</html>

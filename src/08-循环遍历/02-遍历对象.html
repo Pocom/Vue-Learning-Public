@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div id="app">
+    <ul>
+      <!-- 获取单值会返回属性值 value -->
+      <li v-for="value in info">{{ value }}</li>
+      <br>
+      <!-- (value, key)对应对象的属性值与属性 -->
+      <li v-for="(value, key) in info">{{ key + '-' + value }}</li>
+      <br>
+      <!-- (value, key, index)对应对象的属性值、属性和下标 -->
+      <li v-for="(value, key, index) in info">{{ index + '-' +  key + '-' + value }}</li>
+    </ul>
+
+  </div>
+  <script src="../js/vue.js"></script>
+  <script>
+    const vm = new Vue({
+      el: '#app',
+      data: {
+        info: {
+          name: 'A',
+          age: 1,
+          height: 1.1
+        }
+      }
+    })
+  </script>
+</body>
+</html>

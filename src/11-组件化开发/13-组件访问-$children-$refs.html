@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <div id="app">
+    <cpn></cpn>
+    <cpn></cpn>
+    <cpn ref="A"></cpn>
+    <button @click="btnClick">Button</button>
+  </div>
+
+  <template id="cpn">
+    <div>
+      children-component
+    </div>
+  </template>
+
+  <script src="../js/vue.js"></script>
+  <script>
+    const vm = new Vue({
+      el: '#app',
+      data: {
+        message: 'Hello Vue!'
+      },
+      methods: {
+        btnClick() {
+          // 1. $children
+          console.log(this.$children);
+          // this.$children[0].showMessage()
+          for (let c of this.$children) {
+            console.log(c.name)
+          }
+
+          // 2. $refs
+          console.log(this.refs)
+        }
+      },
+      components: {
+        cpn: {
+          template: '#cpn',
+          data() {
+            return {
+              name: 'children-component-name'
+            }
+          },
+          methods: {
+            showMessage() {
+              console.log('showMessage!')
+            }
+          }
+        }
+      },
+    })
+  </script>
+</body>
+
+</html>

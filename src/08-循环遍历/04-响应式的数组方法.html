@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div id="app">
+    <ul>
+      <li v-for="item in letters" :key="item">{{ item }}</li>
+      <button @click="btnClick">Button</button>
+    </ul>
+  </div>
+  <script src="../js/vue.js"></script>
+  <script>
+    const vm = new Vue({
+      el: '#app',
+      data: {
+        letters: ['A', 'B', 'C', 'D'],
+        pushLetter: ''
+      },
+      methods: {
+        btnClick() {
+          // 1. push(... items) 响应式
+          // this.letters.push('E', 'F')
+
+          // 2. pop() 响应式，删除最后一个元素
+          // this.letters.pop()
+
+          // 3. shift() 响应式，删除第一个元素
+          // this.letters.shift()
+
+          // 4. unshift(... items) 响应式，在最前面添加元素
+          // this.letters.unshift('E', 'F')
+
+          // 5. splice(start) 响应式，删除/插入/替换元素
+          // 删除元素：splice(start, deletCount) deletCount 缺省时，删除所有后续所有元素
+          // 插入元素：splice(start, 0, ...insertElements)
+          // 替换元素：splice(start, 1, ...replaceElements)
+          // this.letters.splice(2, 2, 'E', 'F', 'G')
+
+          // 6. sort([function]) 响应式，排序
+          // this.letters.sort()
+
+          // 7. reverse() 响应式，反转
+          // this.letters.reverse()
+
+          // 通过索引修改数组元素，页面中不会变化，非响应式
+          // 不推荐
+          // this.letters[0] = 'E'
+          
+          // Vue.set(object, index, value) 响应式
+          // Vue.set(this.letters, 0, 'E', 'F')
+        }
+      }
+    })
+  </script>
+</body>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <div id="app">
+    <cpn></cpn>
+    <cpn></cpn>
+    <cpn></cpn>
+    <!-- 使用带有默认内容的插槽时 嵌套内容会覆盖默认内容 -->
+    <cpn><button>Button1</button></cpn>
+  </div>
+
+  <template id="cpn">
+    <div>
+      <h3>Component</h3>
+      <!-- <slot></slot> -->
+      <slot><button>Button</button></slot>
+    </div>
+  </template>
+  <script src="../js/vue.js"></script>
+  <script>
+    const vm = new Vue({
+      el: '#app',
+      data: {},
+      components: {
+        cpn: {
+          template: '#cpn',
+
+        }
+      }
+    })
+  </script>
+</body>
+
+</html>

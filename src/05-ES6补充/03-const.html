@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    // 注意点1：
+    // const a = 1;
+    // a = 2; // error
+
+    // 注意点2：
+    // const name; // error
+
+    // 注意点3：指向的对象不能修改，但可以修改内部的属性
+    const obj = {
+      name: 'Wang',
+      age: 18,
+      height: 188
+    }
+    obj.name = 'Kobe';
+    obj.age = 20;
+    obj.height = 180;
+
+  </script>
+</body>
+</html>

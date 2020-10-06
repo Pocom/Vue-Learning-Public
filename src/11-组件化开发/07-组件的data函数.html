@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div id="app">
+    <cpn></cpn>
+    <cpn></cpn>
+  </div>
+
+  <template id="calculator">
+    <div>
+      <h3>当前计数：{{ counter }}</h3>
+      <button @click="increment">+</button>
+      <button @click="decrement">-</button>
+    </div>
+  </template>
+  <script src="../js/vue.js"></script>
+  <script>
+    Vue.component('cpn', {
+      template: '#calculator',
+      data() {
+        return {
+          counter: 0
+        }
+      },
+      methods: {
+        increment() {
+          console.log("increment")
+          this.counter ++
+        },
+        decrement() {
+          this.counter --
+        }
+      }
+    })
+    const vm = new Vue({
+      el: '#app',
+      data: {}
+    })
+  </script>
+</body>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <div id="app">
+    <!-- 在没有形参时，小括号可省略 -->
+    <button @click="btnClick()">Button 1</button>
+    <button @click="btnClick">Button 2</button>
+    <br />
+    <button @click="btnClick2('&')">Button 3</button>
+    <button @click="btnClick2()">Button 4</button>
+    <button @click="btnClick2">Button 5</button>
+    <br />
+    <button @click="btnClick3('&', $event)">Button 6</button>
+  </div>
+  <script src="../js/vue.js"></script>
+  <script>
+    const vm = new Vue({
+      el: '#app',
+      data: {
+      },
+      methods: {
+        btnClick() {
+          console.log('btnClick!')
+        },
+        btnClick2(event) {
+          console.log('peace', event, 'love')
+        },
+        btnClick3(arg, event) {
+          console.log('peace', arg, 'love', event)
+        }
+      }
+    })
+  </script>
+</body>
+
+</html>

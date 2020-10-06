@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .red {
+      color: red;
+    }
+  </style>
+</head>
+<body>
+  <div id="app">
+    <h3 :style="{'font-size': '50px'}">{{ message }}</h3>
+    <h3 :style="{fontSize: fontSize+'px', color: redColor, backgroundColor: 'blue'}">{{ message }}</h3>
+    <h3 :style="getStyles()">{{ message }}</h3>
+  </div>
+  <script src="../js/vue.js"></script>
+  <script>
+    const app = new Vue({
+      el: "#app",
+      data: {
+        message: "Hello world!",
+        fontSize: 50,
+        redColor: "red",
+      },
+      methods: {
+        getStyles: function () {
+          return {fontSize: this.fontSize+'px', color: this.redColor}
+        }
+      }
+    })
+  </script>
+</body>
+</html>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>list-test</title>
+</head>
+
+<body>
+    <div id='app'>
+        <ul>
+            <li v-for='item in movies'>{{item}}</li>
+        </ul>
+    </div>
+
+    <script src="../js/vue.js"></script>
+    <script>
+        let app = new Vue({
+            el: "#app",
+            data: {
+                movies: ['大话西游', '寻梦环游记', '泰坦尼克号']
+            }
+        })
+    </script>
+</body>
+
+</html>

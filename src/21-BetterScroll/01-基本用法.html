@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .wrapper {
+      height: 200px;
+      background-color: red;
+      overflow: hidden;
+    }
+  </style>
+</head>
+
+<body>
+  <div>
+    <!-- 内部只能包含一个元素，这里即是包含了一个 ul 元素 -->
+    <div class="wrapper">
+      <ul>
+        <li>xxxxxx</li>
+        <li>xxxxxx</li>
+        <li>xxxxxx</li>
+        <li>xxxxxx</li>
+        <li>xxxxxx</li>
+        <li>xxxxxx</li>
+        <li>xxxxxx</li>
+        <li>xxxxxx</li>
+        <li>xxxxxx</li>
+        <li>xxxxxx</li>
+        <li>xxxxxx</li>
+        <li>xxxxxx</li>
+        <li>xxxxxx</li>
+        <li>xxxxxx</li>
+        <li>xxxxxx</li>
+        <li>xxxxxx</li>
+        <li>xxxxxx</li>
+        <li>xxxxxx</li>
+        <li>xxxxxx</li>
+        <li>xxxxxx</li>
+        <li>xxxxxx</li>
+        <li>xxxxxx</li>
+        <li>xxxxxx</li>
+        <li>xxxxxx</li>
+        <li>xxxxxx</li>
+        <li>xxxxxx</li>
+        <li>xxxxxx</li>
+        <li>xxxxxx</li>
+        <li>xxxxxx</li>
+        <li>xxxxxx</li>
+        <li>xxxxxx</li>
+        <li>xxxxxx</li>
+        <li>xxxxxx</li>
+        <li>xxxxxx</li>
+        <li>xxxxxx</li>
+        <li>xxxxxx</li>
+        <li>xxxxxx</li>
+        <li>xxxxxx</li>
+        <li>xxxxxx</li>
+        <li>xxxxxx</li>
+        <li>xxxxxx</li>
+        <li>xxxxxx</li>
+        <li>xxxxxx</li>
+        <li>xxxxxx</li>
+        <li>xxxxxx</li>
+        <li>xxxxxx</li>
+        <li>xxxxxx</li>
+        <li>xxxxxx</li>
+        <li>xxxxxx</li>
+        <li>xxxxxx</li>
+        <li>xxxxxx</li>
+        <li>xxxxxx</li>
+        <li>xxxxxx</li>
+        <li>xxxxxx</li>
+        <li>xxxxxx</li>
+        <li>xxxxxx</li>
+        <li>xxxxxx</li>
+        <li>xxxxxx</li>
+        <li>xxxxxx</li>
+        <li>xxxxxx</li>
+        <li>xxxxxx</li>
+        <li>xxxxxx</li>
+        <li>xxxxxx</li>
+        <li>xxxxxx</li>
+        <li>xxxxxx</li>
+        <li>xxxxxx</li>
+        <li>xxxxxx</li>
+        <li>xxxxxx</li>
+        <li>xxxxxx</li>
+        <li>xxxxxx</li>
+        <li>xxxxxx</li>
+        <li>xxxxxx</li>
+        <li>xxxxxx</li>
+        <li>xxxxxx</li>
+        <li>xxxxxx</li>
+        <li>xxxxxx</li>
+        <li>xxxxxx</li>
+        <li>xxxxxx</li>
+        <li>xxxxxx</li>
+        <li>xxxxxx</li>
+        <li>xxxxxx</li>
+        <li>xxxxxx</li>
+        <li>xxxxxx</li>
+        <li>xxxxxx</li>
+        <li>xxxxxx</li>
+        <li>xxxxxx</li>
+        <li>xxxxxx</li>
+        <li>xxxxxx</li>
+        <li>xxxxxx</li>
+        <li>xxxxxx</li>
+        <li>xxxxxx</li>
+        <li>xxxxxx</li>
+        <li>xxxxxx</li>
+        <li>xxxxxx</li>
+        <li>xxxxxx</li>
+        <li>xxxxxx</li>
+        <li>xxxxxx</li>
+        <li>xxxxxx</li>
+        <li>xxxxxx</li>
+        <li>xxxxxx</li>
+      </ul>
+    </div>
+  </div>
+
+  <script src="./bscroll.js"></script>
+  <script>
+    // 默认情况下 BScroll 没有实时监听滚动位置
+    // probeType 参数值：
+    // 0、1 不侦测
+    // 2 手指（鼠标）滚动过程中侦测 而惯性滚动过程中不侦测
+    // 3 实时侦测滚动
+    const bscroll = new BScroll(document.querySelector('.wrapper'), {
+      probeType: 0,
+      pullUpLoad: true
+    })
+
+    bscroll.on('scroll', position => {
+      console.log(position);
+    })
+    bscroll.on('pullingUp', () => {
+      console.log("上拉加载更多!");
+      setTimeout(() => {
+        bscroll.finishPullUp()
+      }, 2000)
+    })
+  </script>
+</body>
+
+</html>

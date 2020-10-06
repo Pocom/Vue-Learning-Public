@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div id="app">
+    <!-- 错误写法，属性值不能使用 Mustache 语法 -->
+    <!-- <img src="{{ imgURL }}" alt=""> -->
+
+    <!-- 正确写法，使用 v-bind 指令 -->
+    <!-- <img v-bind:src="imgURL" alt=""> -->
+    <!-- 语法糖，单独冒号结束 -->
+    <img :src="imgURL" alt="">
+
+  </div>
+  <script src="../js/vue.js"></script>
+  <script>
+    const vm = new Vue({
+      el: "#app",
+      data: {
+        message: "",
+        imgURL: "../../Day 1.assets/1595514829450.png"
+      }
+    })
+  </script>
+</body>
+</html>

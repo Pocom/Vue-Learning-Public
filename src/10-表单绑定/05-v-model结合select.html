@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .center {
+      width: 100%;
+      margin: 0, auto;
+      text-align: center;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="app" class="center">
+    <!-- 单选下拉栏 -->
+    <select name="abc" id="" v-model="fruit">
+      <option value="苹果">苹果</option>
+      <option value="香蕉">香蕉</option>
+      <option value="榴莲">榴莲</option>
+      <option value="葡萄">葡萄</option>
+    </select>
+    <h3>{{ fruit | showFruit }}</h3>
+
+    <!-- 多选下拉栏 -->
+    <select name="abc" id="" v-model="fruits" multiple>
+      <option value="苹果">苹果</option>
+      <option value="香蕉">香蕉</option>
+      <option value="榴莲">榴莲</option>
+      <option value="葡萄">葡萄</option>
+    </select>
+    <h3>{{ fruits | deletSymbol | showFruit }}</h3>
+  </div>
+
+  <script src="../js/vue.js"></script>
+  <script>
+    const vm = new Vue({
+      el: '#app',
+      data: {
+        message: 'Hello!',
+        fruit: '',
+        fruits: [],
+      },
+      filters: {
+        deletSymbol(arr) {
+          return arr.reduce((pre, string) => pre + '，' + string, '').slice(1)
+        },
+        showFruit(fruit) {
+          if (fruit.length == 0) {
+            return "您未选择任何水果。"
+          }
+          return "您选择的水果是" + fruit + "。"
+        }
+      }
+    })
+  </script>
+</body>
+
+</html>

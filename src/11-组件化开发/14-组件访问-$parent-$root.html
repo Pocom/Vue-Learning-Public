@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <div id="app">
+    <cpn></cpn>
+  </div>
+
+  <template id="cpn">
+    <div>
+      <h3>children-component</h3>
+      <ccpn></ccpn>
+    </div>
+  </template>
+
+  <template id="ccpn">
+    <div>
+      <h3>children-children-component</h3>
+      <button @click='btnClick'>Button</button>
+    </div>
+  </template>
+
+  <script src="../js/vue.js"></script>
+  <script>
+    const vm = new Vue({
+      el: '#app',
+      data: {
+        message: 'Hello Vue!'
+      },
+      methods: {
+      },
+      components: {
+        cpn: {
+          template: '#cpn',
+          data() {
+            return {
+              name: 'cpn'
+            }
+          },
+          components: {
+            ccpn: {
+              template: '#ccpn',
+              methods: {
+                btnClick() {
+                  console.log(this.$parent)
+                  console.log(this.$root)
+                  console.log(this.$root.message)
+                },
+              }
+            }
+          }
+        }
+      }
+    })
+  </script>
+</body>
+
+</html>

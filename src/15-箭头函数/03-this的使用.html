@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    setTimeout(function () {
+      console.log(this);  // Window
+    })
+
+    setTimeout(() => {
+      console.log(this);  // Window
+    })
+
+    // 箭头函数中的 this 引用的是最近作用域的对象
+    const obj = {
+      a() {
+        setTimeout(function () {
+          console.log(this);  // Window
+        })
+        setTimeout(() => {
+          console.log(this);  // obj
+        })
+
+        console.log(this); // obj
+      },
+
+      b() {
+        setTimeout(function () {
+          setTimeout(function () {
+            console.log(this);  // Window
+          })
+          setTimeout(() => {
+            console.log(this);  // Window
+          })
+          console.log(this); // Window
+        })
+
+        setTimeout(() => {
+          setTimeout(function () {
+            console.log(this);  // Window
+          })
+          setTimeout(() => {
+            console.log(this);  // obj
+          })
+          console.log(this);  // obj
+        })
+      }
+    }
+
+    obj.a()
+    obj.b()
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    // setTimeout(() => {
+    //   console.log('Hello World!');
+    // })
+
+    // 什么情况下会用到 Promise：需要对异步操作进行封装
+    new Promise((resolve, reject) => {
+      setTimeout(() => {
+        // resolve('Hello World!')
+        reject('Error Message!')
+      }, 1000)
+    }).then(data => {
+      console.log(data);
+    }).catch(err => {
+      console.log(err);
+    })
+  </script>
+</body>
+
+</html>

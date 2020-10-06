@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div id="app">
+    <h2>总价格：{{ totalPrice }}</h2>
+  </div>
+  <script src="../js/vue.js"></script>
+  <script>
+    const vm = new Vue({
+      el: "#app",
+      data: {
+        books: [
+          {id: 110, name: 'Unix编程艺术', price: 119},
+          {id: 111, name: '代码大全', price: 105},
+          {id: 112, name: '深入理解计算机原理', price: 99}
+        ]
+      },
+      // 计算属性，在求简单属性的计算结果上，比 methods 效率更高，
+      // 计算一次后会有缓存，相当于创建了新的属性
+      computed: {
+        totalPrice: function () {
+          let result = 0;
+          for (let i = 0; i < this.books.length; i++) {
+            result += this.books[i].price
+          }
+          return result
+          
+          // // ES6 更简洁的写法
+          // for (let i in this.books) { 
+          //   this.books[i]
+          // }
+          // for (let book of this.books) {
+          // }
+        }
+      },
+      methods: {
+      }
+    })
+  </script>
+</body>
+</html>

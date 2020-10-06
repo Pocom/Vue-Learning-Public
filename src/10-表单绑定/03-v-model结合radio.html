@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <div id="app">
+    <!-- name 属性相同 则会互斥 只能择其一 -->
+    <!-- <label for="male">
+      <input type="radio" id="male" name="sex" value="男">男
+    </label>
+    <label for="female">
+      <input type="radio" id="female" name="sex" value="女">女
+    </label> -->
+
+    <!-- v-model 绑定变量后也能实现互斥 -->
+    <label for="male">
+      <input type="radio" id="male" value="男" v-model="sex">男
+    </label>
+    <label for="female">
+      <input type="radio" id="female" value="女" v-model="sex">女
+    </label>
+
+    <h2>您选择的性别是：{{ sex }}</h2>
+  </div>
+
+  <script src="../js/vue.js"></script>
+  <script>
+    const vm = new Vue({
+      el: '#app',
+      data: {
+        message: 'Hello!',
+        sex: '男',  // 默认
+      }
+    })
+  </script>
+</body>
+
+</html>

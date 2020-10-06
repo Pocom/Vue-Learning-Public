@@ -1,0 +1,5 @@
+body {
+  /* background-color: red; */
+  background: url("../img/img.svg.png") no-repeat center;
+  background-attachment: fixed;
+}

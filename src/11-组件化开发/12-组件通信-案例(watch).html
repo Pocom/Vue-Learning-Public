@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .center {
+      width: auto;
+      margin: 0 auto;
+      text-align: center;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="app" class="center">
+    <cpn :pnum1='num1' :pnum2='num2' @num1change="numChange1" @num2change="numChange2"></cpn>
+    <p>num1:{{ num1 }}</p>
+    <p>num2:{{ num2 }}</p>
+  </div>
+
+  <template id="cpn">
+    <div>
+      <p>pnum1:{{ pnum1 }}</p>
+      <p>dnum1:{{ dnum1 }}</p>
+      <input type="text" v-model="dnum1">
+      <p>pnum2:{{ pnum2 }}</p>
+      <p>dnum2:{{ dnum2 }}</p>
+      <input type="text" v-model="dnum2">
+    </div>
+  </template>
+
+  <script src="../js/vue.js"></script>
+  <script>
+    const vm = new Vue({
+      el: '#app',
+      data: {
+        num1: 1,
+        num2: 2,
+      },
+      methods: {
+        numChange1(val) {
+          // this.num1 = val * 1
+          this.num1 = parseInt(val)
+        },
+        numChange2(val) {
+          this.num2 = parseInt(val)
+        }
+      },
+      components: {
+        cpn: {
+          template: '#cpn',
+          props: {
+            pnum1: Number,
+            pnum2: Number,
+          },
+          data() {
+            return {
+              dnum1: this.pnum1,
+              dnum2: this.pnum2
+            }
+          },
+          // 属性值发生变化时调用
+          watch: {
+            dnum1(newValue, oldValue) {
+              this.dnum2 = newValue * 10
+              this.$emit('num1change', newValue)
+            },
+            dnum2(newValue) {
+              this.dnum1 = newValue / 10
+              this.$emit('num2change', newValue)
+            }
+          }
+        }
+      }
+    })
+  </script>
+</body>
+
+</html>

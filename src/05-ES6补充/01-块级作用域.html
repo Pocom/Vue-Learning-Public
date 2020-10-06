@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <button>Button 1</button>
+  <button>Button 2</button>
+  <button>Button 3</button>
+  <button>Button 4</button>
+  <script>
+    
+    // var btns = document.getElementsByTagName('button')
+    // for (var i = 0; i < btns.length; i++) {
+    //   // 这种方式下 无论点击哪个按钮都是 button 4 is clicked!
+    //   // 这是因为 i 在遍历结束后，变为了 3，没有作用域限制
+    //   // btns[i].addEventListener('click', function () {
+    //   //   console.log('button ' + i + ' is clicked!')
+    //   // })
+
+    //   // 闭包,函数存在作用域
+    //   (function (num) {
+    //     btns[num].addEventListener('click', function () {
+    //       console.log('button ' + (num + 1) + ' is clicked!')
+    //     })
+    //   })(i)
+    // }
+
+    const btns = document.getElementsByTagName('button');
+    for (let i = 0; i < btns.length; i++) {
+      btns[i].addEventListener('click', function () {
+        console.log('button ' + (i + 1) + ' is clicked!')
+      })
+    }
+
+  </script>
+</body>
+
+</html>

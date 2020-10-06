@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div id="app">
+    <cpn :cmovies="movies" :cmessage="message"></cpn>
+  </div>
+
+  <template id="cpn">
+    <div>
+      <h3>{{ cmessage }}</h3>
+      <ul>
+        <li v-for="(item, index) in cmovies">{{ index }}.{{ item }}</li>
+      </ul>
+    </div>
+  </template>
+  <script src="../js/vue.js"></script>
+  <script>
+
+    // 父传子: props
+    const cpn = {
+      template: '#cpn',
+      // props: ['cmovies', 'cmessage'],
+      props: {
+        // 1. 类型限制
+        // cmovies: Array,
+        // cmessage: String,
+
+        // 2. 提供默认值
+        cmovies: {
+          type: Array,
+          // 当 type 为数组或对象时，default 必须是函数
+          // default: ['A', 'B', 'C'], 
+          default() {
+            return ['A','B', 'C']
+          },
+          required: true // 将该属性设为必需
+        },
+        cmessage: {
+          type: String,
+          default: 'cmessage',
+        }
+      },
+      data() {return {}},
+      methods: {},
+    }
+    const vm = new Vue({
+      el: '#app',
+      data: {
+        message: 'Hello',
+        movies: ['海王', '海贼王', '海尔兄弟']
+      },
+      components: {
+        cpn  // 字面量增强写法
+      }
+    })
+  </script>
+</body>
+</html>

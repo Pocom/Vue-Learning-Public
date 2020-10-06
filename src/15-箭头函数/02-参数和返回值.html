@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+
+  <script>
+    const sum = (num1, num2) => {
+      return num1 + num2
+    }
+
+    // 一个参数 小括号可省略
+    const power = num => {
+      return num * num
+    }
+
+    // 函数代码块中不止一行代码
+    const test = () => {
+      console.log('Hello World!');
+      console.log('Hello VueJS!');
+    }
+
+    // 函数代码块中只有一行代码 可省略大括号 直接作为返回值
+    const mul = (num1, num2) => num1 * num2
+    console.log(mul(10, 20));
+
+    // 而当此行代码没有返回值 则会返回 undefined
+    const demo = () => console.log('Hello Demo!');
+
+  </script>
+</body>
+
+</html>

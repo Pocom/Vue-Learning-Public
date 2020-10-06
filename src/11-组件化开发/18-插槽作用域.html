@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div id="app">
+    <cpn></cpn>
+
+    <cpn>
+      <!-- Vue 2.5.x 以下需要 <template> -->
+      <template slot-scope="slot">
+        <!-- <span v-for="item in slot.data">{{ data }} - </span> -->
+        <span>{{ slot.data.join(' - ') }}</span>
+      </template>
+    </cpn>
+  </div>
+
+  <template id="cpn">
+    <div>
+      <slot :data="programming">
+        <ul>
+          <li v-for="item in programming">{{ item }}</li>
+        </ul>
+      </slot>
+    </div>
+  </template>
+
+  <script src="../js/vue.js"></script>
+  <script>
+    const vm = new Vue({
+      el: '#app',
+      data: {},
+      components: {
+        cpn: {
+          template: '#cpn',
+          data() {
+            return {
+              programming: ['Javascript', 'C++', 'Java', 'C#', 'Python', 'Go', 'Swift']
+            }
+          }
+        }
+      }
+    })
+  </script>
+</body>
+</html>

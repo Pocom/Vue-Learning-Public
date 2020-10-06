@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div id="app" style="text-align: center">
+    <!-- 用户登录:
+    <input type="text" placeholder="请输入邮箱" v-if="isMail">
+    <input type="text" placeholder="请输入用户名" v-else>
+    <button type="button" @click="inputChange">切换类型</button> -->
+  
+    <span v-if="isUser">
+      <label for="userName">用户账号:</label>
+      <input type="text" id="userName">
+    </span>
+    <span v-else>
+      <label for="userMail">用户邮箱:</label>
+      <input type="text" id="userMail">
+    </span>
+    <button @click="isUser=!isUser">切换类型</button>
+  </div>
+  <script src="../js/vue.js"></script>
+  <script>
+    const vm = new Vue({
+      el: '#app',
+      data: {
+        isMail: false,
+        isUser: true,
+      },
+      methods: {
+        inputChange() {
+          this.isMail = !this.isMail
+        }
+      }
+    })
+  </script>
+</body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .active {
+      color: red;
+    }
+    .line {
+      font-size: 50px;
+    }
+  </style>
+</head>
+<body>
+  <div id="app">
+    <h3 :class="[active, line]">{{ message }}</h3>
+    <h3 :class="getClasses()">{{ message }}</h3>
+    <button @click="btnClick">click</button>
+  </div>
+  <script src="../js/vue.js"></script>
+  <script>
+    const vm = new Vue({
+      el: "#app",
+      data: {
+        message: "Hello vue!",
+        active: "active",
+        line: "line"
+      },
+      methods: {
+        btnClick: function () {
+          this.active = null;
+        },
+        getClasses: function () {
+          return [this.active, this.line]
+        }
+      }
+    })
+  </script>
+</body>
+</html>
